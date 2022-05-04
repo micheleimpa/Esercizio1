@@ -1,9 +1,8 @@
 #include <iostream>
 #include <string>
-#define R 20
 using namespace std;
 
-typedef struct
+struct Libro
 {
     string ISBN;
     string titolo;
@@ -12,11 +11,12 @@ typedef struct
     string genere;
     float prezzo;
     int anno;
-}Libro;
-int inserimento(int ag)
+};
+
+void inserimento(Libro libro[])
 {
-Libro libro[R];
-    cout << "INSERIMENTO LIBRO" << endl;
+    int ag=1;
+    ag++;
     cout << " Inserire il codice ISBN del libro: ";
     cin >> libro[ag].ISBN;
     cout << " Inserire il titolo del libro: ";
@@ -31,11 +31,9 @@ Libro libro[R];
     cin >> libro[ag].prezzo;
     cout << " Inserire genere del libro: ";
     cin >> libro[ag].genere;
-    ag++;
 }
-int stampa(int ag)
+void stampa(Libro libro[],int ag)
 {
-Libro libro[R];
     cout<<endl;
     cout << "Catalogo dei libri"<<endl;
     for(int i=0; i<ag; i++)
@@ -48,25 +46,88 @@ Libro libro[R];
         cout<<"Anno : "<<libro[i].anno<<endl;
         cout<<"Prezzo : "<<libro[i].prezzo<<endl;
         cout<<"Genere : "<<libro[i].genere<<endl;
+    }
+}
+void ricerca(Libro libro[],int ag )
+{
+    string ricerca;
+    cout<<"Inserire il codice da ricercare del libro"<<endl;
+    cin>>ricerca;
+    int i=0;
+    if(libro[i].ISBN==ricerca)
+    {
+        cout<<endl;
+        cout<<"Libro trovato"<<endl;
+        cout<<"ISBN : "<<libro[i].ISBN<<endl;
+        cout<<"Titolo : "<<libro[i].titolo<<endl;
+        cout<<"Autore : "<<libro[i].autore<<endl;
+        cout<<"Editore : "<<libro[i].editore<<endl;
+        cout<<"Anno : "<<libro[i].anno<<endl;
+        cout<<"Prezzo : "<<libro[i].prezzo<<endl;
+        cout<<"Genere : "<<libro[i].genere<<endl;
+    }
+    else{
+        cout<<"Libro non trovato"<<endl;
+    }
+}
+
+void modifica(Libro libro[])
+{
+    string mod;
+    cout<<"Inserire il codice del libro da modificare"<<endl;
+    cin>>mod;
+    int i=0;
+    if(libro[i].ISBN==mod)
+    {
+    cout << " Modifica codice ISBN del libro: ";
+    cin >> libro[i].ISBN;
+    cout << " MOdifica il titolo del libro: ";
+    cin >> libro[i].titolo;
+    cout << " Modifica l'autore del libro: ";
+    cin >> libro[i].autore;
+    cout << " Modifica l'editore del libro: ";
+    cin >> libro[i].editore;
+    cout << " Modifica l'anno di pubblicazione del libro: ";
+    cin >> libro[i].anno;
+    cout << " Modifica il prezzo del libro: ";
+    cin >> libro[i].prezzo;
+    cout << " Modifica genere del libro: ";
+    cin >> libro[i].genere;
+    }
+    else
+    {
 
     }
 }
-int ricerca( )
-{
-
-}
-int modifica()
-{
-
-}
-int elimina()
+int elimina(int ag)
 {
 
 }
 
 int main()
 {
-
-
+    Libro libro[50];
+int scelta=0, ag=0;
+    while(scelta!=6)
+    {
+        cout<<endl;
+        cout << " BENVENUTO NELLA BIBLIOTECA" << endl;
+        cout << "1) Crea un nuovo libro" << endl;
+        cout << "2) Visualizzare l'intero catalogo della biblioteca" << endl;
+        cout << "3) Ricerca di un particolare libro" << endl;
+        cout << "4) Modificare dei dati a libro" << endl;
+        cout << "5) Eliminazione di un libro" << endl;
+        cout << "6) Uscita" << endl;
+        do{
+            cout << "SCEGLI: ";
+            cin >> scelta;
+        }while(scelta<1 || scelta>6);
+        if(scelta==1) inserimento(libro);
+        if(scelta==2) stampa(libro,ag);
+        if(scelta==3) ricerca(libro,ag);
+        if(scelta==4) modifica(libro);
+        if(scelta==5) elimina(ag);
+        if(scelta==6) break;
+    }
     return 0;
 }
