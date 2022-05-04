@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#define R 10
+#define R 20
 using namespace std;
 
 typedef struct
@@ -12,30 +12,44 @@ typedef struct
     string genere;
     float prezzo;
     int anno;
-}libro;
+}Libro;
 int inserimento(int ag)
 {
-libro libri[R];
+Libro libro[R];
     cout << "INSERIMENTO LIBRO" << endl;
     cout << " Inserire il codice ISBN del libro: ";
-    cin >> libri[ag].ISBN;
+    cin >> libro[ag].ISBN;
     cout << " Inserire il titolo del libro: ";
-    cin >> libri[ag].titolo;
+    cin >> libro[ag].titolo;
     cout << " Inserire l'autore del libro: ";
-    cin >> libri[ag].autore;
+    cin >> libro[ag].autore;
     cout << " Inserire l'editore del libro: ";
-    cin >> libri[ag].editore;
+    cin >> libro[ag].editore;
     cout << " Inserire l'anno di pubblicazione del libro: ";
-    cin >> libri[ag].anno;
+    cin >> libro[ag].anno;
     cout << " Inserire il prezzo del libro: ";
-    cin >> libri[ag].prezzo;
+    cin >> libro[ag].prezzo;
     cout << " Inserire genere del libro: ";
-    cin >> libri[ag].genere;
+    cin >> libro[ag].genere;
     ag++;
 }
-int stampa()
+int stampa(int ag)
 {
+Libro libro[R];
+    cout<<endl;
+    cout << "Catalogo dei libri"<<endl;
+    for(int i=0; i<ag; i++)
+    {
+        cout<<endl;
+        cout<<"ISBN : "<<libro[i].ISBN<<endl;
+        cout<<"Titolo : "<<libro[i].titolo<<endl;
+        cout<<"Autore : "<<libro[i].autore<<endl;
+        cout<<"Editore : "<<libro[i].editore<<endl;
+        cout<<"Anno : "<<libro[i].anno<<endl;
+        cout<<"Prezzo : "<<libro[i].prezzo<<endl;
+        cout<<"Genere : "<<libro[i].genere<<endl;
 
+    }
 }
 int ricerca( )
 {
