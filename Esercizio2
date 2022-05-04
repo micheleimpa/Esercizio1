@@ -13,3 +13,30 @@ typedef struct
     float prezzo;
     int anno;
 }libro;
+int inserimento()
+{
+
+}
+int stampa()
+{
+
+}
+int ricerca( )
+{
+
+}
+int modifica()
+{
+
+}
+int elimina()
+{
+
+}
+
+int main()
+{
+
+
+    return 0;
+}
