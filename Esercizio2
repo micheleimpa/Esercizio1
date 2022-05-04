@@ -13,9 +13,25 @@ typedef struct
     float prezzo;
     int anno;
 }libro;
-int inserimento()
+int inserimento(int ag)
 {
-
+libro libri[R];
+    cout << "INSERIMENTO LIBRO" << endl;
+    cout << " Inserire il codice ISBN del libro: ";
+    cin >> libri[ag].ISBN;
+    cout << " Inserire il titolo del libro: ";
+    cin >> libri[ag].titolo;
+    cout << " Inserire l'autore del libro: ";
+    cin >> libri[ag].autore;
+    cout << " Inserire l'editore del libro: ";
+    cin >> libri[ag].editore;
+    cout << " Inserire l'anno di pubblicazione del libro: ";
+    cin >> libri[ag].anno;
+    cout << " Inserire il prezzo del libro: ";
+    cin >> libri[ag].prezzo;
+    cout << " Inserire genere del libro: ";
+    cin >> libri[ag].genere;
+    ag++;
 }
 int stampa()
 {
