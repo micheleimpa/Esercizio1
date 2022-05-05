@@ -9,14 +9,12 @@ struct Libro
     string autore;
     string editore;
     string genere;
-    float prezzo;
-    int anno;
+    string prezzo;
+    string anno;
 };
 
-void inserimento(Libro libro[])
+int inserimento(Libro libro[],int ag)
 {
-    int ag=1;
-    ag++;
     cout << " Inserire il codice ISBN del libro: ";
     cin >> libro[ag].ISBN;
     cout << " Inserire il titolo del libro: ";
@@ -31,6 +29,8 @@ void inserimento(Libro libro[])
     cin >> libro[ag].prezzo;
     cout << " Inserire genere del libro: ";
     cin >> libro[ag].genere;
+    ag++;
+    return ag;
 }
 void stampa(Libro libro[],int ag)
 {
@@ -53,56 +53,69 @@ void ricerca(Libro libro[],int ag )
     string ricerca;
     cout<<"Inserire il codice da ricercare del libro"<<endl;
     cin>>ricerca;
-    int i=0;
-    if(libro[i].ISBN==ricerca)
+    for(int i=0;i<ag;i++)
     {
-        cout<<endl;
-        cout<<"Libro trovato"<<endl;
-        cout<<"ISBN : "<<libro[i].ISBN<<endl;
-        cout<<"Titolo : "<<libro[i].titolo<<endl;
-        cout<<"Autore : "<<libro[i].autore<<endl;
-        cout<<"Editore : "<<libro[i].editore<<endl;
-        cout<<"Anno : "<<libro[i].anno<<endl;
-        cout<<"Prezzo : "<<libro[i].prezzo<<endl;
-        cout<<"Genere : "<<libro[i].genere<<endl;
-    }
-    else{
-        cout<<"Libro non trovato"<<endl;
+           if(libro[i].ISBN==ricerca)
+        {
+            cout<<endl;
+            cout<<"Libro trovato"<<endl;
+            cout<<"ISBN : "<<libro[i].ISBN<<endl;
+            cout<<"Titolo : "<<libro[i].titolo<<endl;
+            cout<<"Autore : "<<libro[i].autore<<endl;
+            cout<<"Editore : "<<libro[i].editore<<endl;
+            cout<<"Anno : "<<libro[i].anno<<endl;
+            cout<<"Prezzo : "<<libro[i].prezzo<<endl;
+            cout<<"Genere : "<<libro[i].genere<<endl;
+        }
     }
 }
-
-void modifica(Libro libro[])
+void modifica(Libro libro[],int ag)
 {
     string mod;
     cout<<"Inserire il codice del libro da modificare"<<endl;
     cin>>mod;
-    int i=0;
-    if(libro[i].ISBN==mod)
+    for(int i=0;i<ag;i++)
     {
-    cout << " Modifica codice ISBN del libro: ";
-    cin >> libro[i].ISBN;
-    cout << " MOdifica il titolo del libro: ";
-    cin >> libro[i].titolo;
-    cout << " Modifica l'autore del libro: ";
-    cin >> libro[i].autore;
-    cout << " Modifica l'editore del libro: ";
-    cin >> libro[i].editore;
-    cout << " Modifica l'anno di pubblicazione del libro: ";
-    cin >> libro[i].anno;
-    cout << " Modifica il prezzo del libro: ";
-    cin >> libro[i].prezzo;
-    cout << " Modifica genere del libro: ";
-    cin >> libro[i].genere;
+            if(libro[i].ISBN==mod)
+        {
+        cout << " Modifica codice ISBN del libro: ";
+        cin >> libro[i].ISBN;
+        cout << " MOdifica il titolo del libro: ";
+        cin >> libro[i].titolo;
+        cout << " Modifica l'autore del libro: ";
+        cin >> libro[i].autore;
+        cout << " Modifica l'editore del libro: ";
+        cin >> libro[i].editore;
+        cout << " Modifica l'anno di pubblicazione del libro: ";
+        cin >> libro[i].anno;
+        cout << " Modifica il prezzo del libro: ";
+        cin >> libro[i].prezzo;
+        cout << " Modifica genere del libro: ";
+        cin >> libro[i].genere;
+        }
     }
-    else
-    {
 
-    }
 }
-int elimina(int ag)
+int elimina(Libro libro[],int ag)
 {
-
+    string elimina;
+    cout<<"Inserire il codice del libro da eliminare"<<endl;
+    cin>>elimina;
+    for(int i=0;i<ag;i++)
+    {
+        if(libro[i].ISBN==elimina)
+        {
+            libro[i].ISBN="";
+            libro[i].titolo="";
+            libro[i].autore="";
+            libro[i].editore="";
+            libro[i].anno="";
+            libro[i].prezzo="";
+            libro[i].genere="";
+        }
+    }
 }
+
 
 int main()
 {
@@ -119,14 +132,14 @@ int scelta=0, ag=0;
         cout << "5) Eliminazione di un libro" << endl;
         cout << "6) Uscita" << endl;
         do{
-            cout << "SCEGLI: ";
+            cout << "Scegli: ";
             cin >> scelta;
         }while(scelta<1 || scelta>6);
-        if(scelta==1) inserimento(libro);
+        if(scelta==1) ag=inserimento(libro,ag);
         if(scelta==2) stampa(libro,ag);
         if(scelta==3) ricerca(libro,ag);
-        if(scelta==4) modifica(libro);
-        if(scelta==5) elimina(ag);
+        if(scelta==4) modifica(libro,ag);
+        if(scelta==5) elimina(libro,ag);
         if(scelta==6) break;
     }
     return 0;
